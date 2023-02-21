@@ -1,0 +1,21 @@
+---
+pool:
+  name: "Azure Pipelines" 
+  vmImage: 'ubuntu-latest'
+
+trigger:
+  - main
+
+
+resources:
+  repositories:
+    - repository: 'azure_pipeline'
+      name: 'GitPracticeRepo/AzureDevOpsReusableTemplates'
+      endpoint: 'github.com_shaikkhajaibrahim'
+      type: 'github'
+      ref: 'refs/heads/main'
+
+steps:
+  - template: java/maven-build-simple.yaml@azuredevopstemplates
+    parameters:
+      jdkVersion: '1.8'
