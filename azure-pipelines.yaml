@@ -10,12 +10,12 @@ trigger:
 resources:
   repositories:
     - repository: 'azure_pipeline'
-      name: 'GitPracticeRepo/AzureDevOpsReusableTemplates'
-      endpoint: 'github.com_shaikkhajaibrahim'
+      name: 'nkishore555/azure_pipeline'
+      endpoint: 'github.com_nkishore555'
       type: 'github'
       ref: 'refs/heads/main'
 
 steps:
-  - template: java/maven-build-simple.yaml@azuredevopstemplates
+  - template: maven-reusable-template.yaml@azure_pipeline
     parameters:
-      jdkVersion: '1.8'
+      jdkVersion: '1.17'

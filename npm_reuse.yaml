@@ -1,0 +1,27 @@
+parameters:
+  - name: branch
+    displayName: Git Branch
+    type: string
+    default: 'main'
+  - name: agentvmImage
+    displayName: 'Agent VM Image'
+    type: string
+    default: 'ubuntu-latest'
+  - name: npmversion
+    displayName: 'npm version'
+    type: string
+    default: '16.x'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: "${{ parameters.npmversion}}"
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+  displayName: 'npm install'
+
+- script: |
+    npm run build
+  displayName: 'npm build'
